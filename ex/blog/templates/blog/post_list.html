@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Все публикации{% endblock %}
+
+{% block content %}
+  <h2>Все публикации</h2>
+  {% for post in posts %}
+    <div>
+      <h3><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+      <p>{{ post.content }}</p>
+      <p>Автор: {{ post.author.username }}</p>
+      <p>Дата создания: {{ post.created_at }}</p>
+    </div>
+    <hr>
+  {% endfor %}
+
+  
+  <div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page=1">&laquo; первая</a>
+            <a href="?page={{ posts.previous_page_number }}">предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ posts.number }} из {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">следующая</a>
+            <a href="?page={{ posts.paginator.num_pages }}">последняя &raquo;</a>
+        {% endif %}
+    </span>
+  </div>
+{% endblock %}

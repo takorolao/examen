@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="mb-4">Вход в My Blog</h2>
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary btn-lg">Войти</button> 
+          <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Зарегестрируйся!</a>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

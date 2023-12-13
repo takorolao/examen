@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Домашняя{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h1 class="display-4">Добро пожаловать в MyBloggg!</h1>
+    <p class="lead">Здесь вы найдете увлекательные публикации.</p>
+    <hr class="my-4">
+    <p>Присоединяйтесь к нашему сообществу!</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'post-list' %}" role="button">Посмотреть публикации</a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h2>О нас</h2>
+      <p>Blog - это платформа для обмена идеями, знаниями и опытом.</p>
+    </div>
+    <div class="col-md-6">
+      <h2>Как присоединиться</h2>
+      <p>Присоединиться к MyBloggg просто! <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Зарегестрируйся!</a> дружище и оставляй посты и комментируй их вместе с другими пользователями!</p>
+    </div>
+  </div>
+{% endblock %}

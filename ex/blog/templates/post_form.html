@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if edit %}Редактирование{% else %}Отправка{% endif %} публикации{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="mb-4">{% if edit %}Редактирование{% else %}Отправка{% endif %} публикации</h2>
+        <form method="post" {% if edit %}action="{% url 'edit-post' post.id %}"{% else %}action="{% url 'create-post' %}"{% endif %}>
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">{% if edit %}Сохранить изменения{% else %}Опубликовать{% endif %}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
